@@ -439,6 +439,7 @@ I18N-C += $(SRCS-HDHOMERUN)
 # NetCeiver
 SRCS-NETCEIVER = \
         src/input/mpegts/netceiver/netceiver.c \
+        src/input/mpegts/netceiver/netceiver_discovery.c \
         src/input/mpegts/netceiver/netceiver_frontend.c \
         src/input/mpegts/netceiver/netceiver_hardware.c \
         src/input/mpegts/netceiver/netceiver_monitor.c \

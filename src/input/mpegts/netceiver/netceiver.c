@@ -49,6 +49,7 @@ static void netceiver_load_config(void)
 
 void netceiver_init(void)
 {
+  netceiver_discovery_init();
   netceiver_monitor_init();
   netceiver_frontend_init();
   netceiver_hardware_init();

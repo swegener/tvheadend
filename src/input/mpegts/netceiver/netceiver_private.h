@@ -95,6 +95,14 @@ void netceiver_monitor_init(void);
 void netceiver_start_monitor(netceiver_frontend_t *ncf, dvb_mux_t *dm);
 void netceiver_stop_monitor(netceiver_frontend_t *ncf);
 
+/*
+ * Discovery
+ */
+
+void netceiver_discovery_init(void);
+void netceiver_discovery_add_interface(const char *interface);
+void netceiver_discovery_remove_interface(const char *interface);
+
 #endif /* __TVH_NETCEIVER_PRIVATE_H__ */
 
 /******************************************************************************
