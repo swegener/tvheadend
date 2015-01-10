@@ -2658,6 +2658,7 @@ tvheadend.idnode_tree = function(panel, conf)
         var current = null;
         var uuid = null;
         var params = conf.params || {};
+        params['meta'] = 1;
         var uilevel = tvheadend.uilevel;
         var loader = new Ext.tree.TreeLoader({
             dataUrl: conf.url,
