@@ -50,6 +50,14 @@ static htsmsg_t *netceiver_frontend_class_save(idnode_t *in, char *filename, siz
   return c;
 }
 
+static const void *netceiver_frontend_class_fe_type_get(void *obj)
+{
+  netceiver_frontend_t *ncf = obj;
+  static const char *s;
+  s = dvb_type2str(ncf->ncf_fe_type);
+  return &s;
+}
+
 const idclass_t netceiver_frontend_class = {
   .ic_super      = &mpegts_input_class,
   .ic_class      = "netceiver_frontend",
@@ -61,6 +69,14 @@ const idclass_t netceiver_frontend_class = {
       .id       = "interface",
       .name     = N_("Interface"),
       .off      = offsetof(netceiver_frontend_t, ncf_interface),
+      .opts     = PO_RDONLY | PO_NOSAVE,
+    },
+    {
+      .type     = PT_STR,
+      .id       = "fe_type",
+      .name     = "Network Type",
+      .get      = netceiver_frontend_class_fe_type_get,
+      .opts     = PO_RDONLY | PO_NOSAVE,
     },
     {
       .type     = PT_STR,
@@ -232,20 +248,37 @@ static void netceiver_frontend_update_pids(mpegts_input_t *mi, mpegts_mux_t *mm)
   mpegts_pid_done(&pdel);
 }
 
-netceiver_frontend_t *netceiver_frontend_create(const char *uuid, htsmsg_t *conf)
+static idnode_set_t *netceiver_frontend_network_list(mpegts_input_t *mi)
+{
+  netceiver_frontend_t *ncf = (netceiver_frontend_t *) mi;
+
+  return dvb_network_list_by_fe_type(ncf->ncf_fe_type);
+}
+
+netceiver_frontend_t *netceiver_frontend_create(const char *uuid, const char *interface, dvb_fe_type_t type)
 {
   netceiver_frontend_t *ncf;
+  htsmsg_t *conf;
 
   ncf = calloc(1, sizeof(*ncf));
+  conf = hts_settings_load("input/dvb/netceiver/frontends/%s", uuid);
   ncf = (netceiver_frontend_t *) mpegts_input_create0((mpegts_input_t *) ncf, &netceiver_frontend_class, uuid, conf);
+  htsmsg_destroy(conf);
 
   ncf->mi_is_enabled   = netceiver_frontend_is_enabled;
   ncf->mi_start_mux    = netceiver_frontend_start_mux;
   ncf->mi_stop_mux     = netceiver_frontend_stop_mux;
   ncf->mi_update_pids  = netceiver_frontend_update_pids;
+  ncf->mi_network_list = netceiver_frontend_network_list;
 
-  if (!ncf->mi_name)
-    ncf->mi_name = strdup("NetCeiver");
+  ncf->ncf_interface = strdup(interface);
+  ncf->ncf_fe_type   = type;
+
+  if (!ncf->mi_name) {
+    char name[1024];
+    snprintf(name, sizeof(name), "NetCeiver %s", dvb_type2str(ncf->ncf_fe_type));
+    ncf->mi_name = strdup(name);
+  }
 
   tvhdebug(LS_NETCEIVER, "created %s on interface %s", ncf->mi_name, ncf->ncf_interface);
 

@@ -135,6 +135,7 @@ void netceiver_hardware_init(void)
 
   idclass_register(&netceiver_hardware_class);
 
+  tvhdebug(LS_NETCEIVER, "loading NetCeiver configuration");
   conf = hts_settings_load("input/dvb/netceiver/config");
   tvh_hardware_create0((tvh_hardware_t *) &netceiver_hardware, &netceiver_hardware_class, NULL, conf);
   htsmsg_destroy(conf);

@@ -1358,6 +1358,20 @@ out:
   return nc;
 }
 
+static void netceiver_tuner_create_frontend(netceiver_tuner_t *nct, const char *interface, dvb_fe_type_t type)
+{
+  uint8_t uuidbin[20];
+  char uuidhex[UUID_HEX_SIZE];
+
+  sha1_calc(uuidbin, (uint8_t *) nct->nct_uuid, strlen(nct->nct_uuid), NULL, 0);
+  bin2hex(uuidhex, sizeof(uuidhex), uuidbin, sizeof(uuidbin));
+
+  pthread_mutex_lock(&global_lock);
+  if (!idnode_find(uuidhex, NULL, NULL))
+    netceiver_frontend_create(uuidhex, interface, type);
+  pthread_mutex_unlock(&global_lock);
+}
+
 /*
  * Parse functions
  */
@@ -1406,15 +1420,24 @@ static netceiver_t *netceiver_parse_discovery_platform(htsmsg_t *msg, const char
   return nc;
 }
 
-static netceiver_tuner_t *netceiver_parse_discovery_tuner(netceiver_t *nc, htsmsg_t *msg)
+static dvb_fe_type_t netceiver_frontend_type(const char *type)
+{
+  if (!strcmp(type, "DVB-S2"))
+    return DVB_TYPE_S;
+
+  return dvb_str2type(type);
+}
+
+static netceiver_tuner_t *netceiver_parse_discovery_tuner(netceiver_t *nc, htsmsg_t *msg, const char *interface)
 {
   netceiver_tuner_t *nct;
   const char *uuid;
+  int created = 0;
 
   uuid = htsmsg_xml_get_cdata_str(msg, PRF_NS "UUID");
   if (!uuid)
     return NULL;
-  nct = netceiver_tuner_find(nc, uuid, NULL);
+  nct = netceiver_tuner_find(nc, uuid, &created);
   if (!nct)
     return NULL;
 
@@ -1435,6 +1458,9 @@ static netceiver_tuner_t *netceiver_parse_discovery_tuner(netceiver_t *nc, htsms
 
   nct->nct_last_status = gclk();
   idnode_notify_changed(&nct->nct_id);
+
+  if (created)
+    netceiver_tuner_create_frontend(nct, interface, netceiver_frontend_type(nct->nct_type));
 
   return nct;
 }
@@ -1620,7 +1646,7 @@ static void netceiver_parse_discovery_netceiver(htsmsg_t *msg, const char *inter
       nc = netceiver_parse_discovery_platform(msg, interface);
     } else if (!strcmp(about, "Tuner") ) {
       if (nc)
-        netceiver_parse_discovery_tuner(nc, msg);
+        netceiver_parse_discovery_tuner(nc, msg, interface);
     } else if (!strcmp(about, "SatelliteList") ) {
       if (nc)
         netceiver_parse_discovery_satellite_list(nc, msg);

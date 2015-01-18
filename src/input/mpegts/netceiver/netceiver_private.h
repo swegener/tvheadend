@@ -69,6 +69,8 @@ typedef struct netceiver_frontend
 {
   mpegts_input_t;
 
+  dvb_fe_type_t     ncf_fe_type;
+
   const char       *ncf_interface;
 
   const char       *ncf_netceiver_tuner_uuid;
@@ -84,7 +86,7 @@ typedef struct netceiver_frontend
 } netceiver_frontend_t;
 
 void netceiver_frontend_init(void);
-netceiver_frontend_t *netceiver_frontend_create(const char *uuid, htsmsg_t *conf);
+netceiver_frontend_t *netceiver_frontend_create(const char *uuid, const char *interface, dvb_fe_type_t type);
 udp_connection_t *netceiver_frontend_tune(netceiver_frontend_t *ncf, netceiver_group_t group, int priority, dvb_mux_t *dm, int pid, int sid);
 
 /*

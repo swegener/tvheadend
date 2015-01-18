@@ -29,31 +29,12 @@
  * Initialization
  */
 
-static void netceiver_load_config(void)
-{
-  htsmsg_t *conf, *e;
-  htsmsg_field_t *f;
-
-  tvhdebug(LS_NETCEIVER, "loading NetCeiver configuration");
-
-  if ((conf = hts_settings_load_r(1, "input/dvb/netceiver/frontends"))) {
-    HTSMSG_FOREACH(f, conf) {
-      tvhdebug(LS_NETCEIVER, "loading NetCeiver configuration from %s", f->hmf_name);
-      if (!(e = htsmsg_get_map_by_field(f)))
-        continue;
-      netceiver_frontend_create(f->hmf_name, e);
-    }
-    htsmsg_destroy(conf);
-  }
-}
-
 void netceiver_init(void)
 {
   netceiver_discovery_init();
   netceiver_monitor_init();
   netceiver_frontend_init();
   netceiver_hardware_init();
-  netceiver_load_config();
 }
 
 /******************************************************************************
