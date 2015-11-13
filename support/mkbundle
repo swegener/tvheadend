@@ -107,7 +107,7 @@ def output_file ( path, name, idx, next = -1 ):
       d = open(p, 'rb').read()
   if p.endswith('.gz'):
     t = BytesIO(d)
-    z = gzip.GzipFile(filename=name, mode='r', fileobj=t)
+    z = gzip.GzipFile(mode='r', fileobj=t)
     nd = z.read()
     o = len(nd)
   elif opts.gzip:
@@ -116,7 +116,7 @@ def output_file ( path, name, idx, next = -1 ):
     t = BytesIO()
     if l < 0: l = 1
     if l > 9: l = 9
-    z = gzip.GzipFile(filename=name, mode='w', compresslevel=l, fileobj=t)
+    z = gzip.GzipFile(filename='', mode='w', compresslevel=l, fileobj=t)
     z.write(d)
     z.close()
     d = t.getvalue()
