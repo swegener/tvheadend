@@ -116,7 +116,7 @@ def output_file ( path, name, idx, next = -1 ):
     t = BytesIO()
     if l < 0: l = 1
     if l > 9: l = 9
-    z = gzip.GzipFile(filename='', mode='w', compresslevel=l, fileobj=t)
+    z = gzip.GzipFile(filename='', mode='w', compresslevel=l, fileobj=t, mtime=0)
     z.write(d)
     z.close()
     d = t.getvalue()
@@ -167,7 +167,7 @@ def add_entry ( ents, path = "", name = "", idx = -1, next = -1 ):
   d = os.path.join(path, name)
   p = -1
   c = 0
-  for k in ents:
+  for k in sorted(ents):
     
     # File
     if ents[k] is None:

@@ -835,7 +835,8 @@ $(BUILDDIR)/bundle.o: $(BUILDDIR)/bundle.c
 
 $(BUILDDIR)/bundle.c: $(DVBSCAN-yes) make_webui
 	@mkdir -p $(dir $@)
-	$(pMKBUNDLE) -o $@ -d ${BUILDDIR}/bundle.d $(BUNDLE_FLAGS) $(BUNDLES:%=$(ROOTDIR)/%)
+	$(pMKBUNDLE) -o $@.new -d ${BUILDDIR}/bundle.d $(BUNDLE_FLAGS) $(BUNDLES:%=$(ROOTDIR)/%)
+	@cmp -s $@.new $@ && rm -f $@.new || mv -f $@.new $@
 
 .PHONY: make_webui
 make_webui:
