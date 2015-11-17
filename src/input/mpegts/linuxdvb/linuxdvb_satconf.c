@@ -1265,8 +1265,6 @@ linuxdvb_satconf_save ( linuxdvb_satconf_t *ls, htsmsg_t *m )
  * Class definition
  * *************************************************************************/
 
-extern const idclass_t mpegts_input_class;
-
 static const void *
 linuxdvb_satconf_ele_class_network_get( void *o )
 {

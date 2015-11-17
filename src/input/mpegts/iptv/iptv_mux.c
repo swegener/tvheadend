@@ -24,7 +24,6 @@
 /*
  * Class
  */
-extern const idclass_t mpegts_mux_class;
 
 static inline void
 iptv_url_set0 ( char **url, char **sane_url,

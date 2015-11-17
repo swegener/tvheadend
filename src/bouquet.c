@@ -1184,9 +1184,6 @@ bouquet_download_stop(void *aux)
 static int
 parse_enigma2(bouquet_t *bq, char *data)
 {
-  extern service_t *mpegts_service_find_e2(uint32_t stype, uint32_t sid,
-                                           uint32_t tsid, uint32_t onid,
-                                           uint32_t hash);
   char *argv[11], *p, *tagname = NULL, *name;
   long lv, stype, sid, tsid, onid, hash;
   uint32_t seen = 0;

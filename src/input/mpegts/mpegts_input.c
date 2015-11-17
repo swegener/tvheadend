@@ -919,7 +919,6 @@ static void
 mpegts_input_create_mux_instance
   ( mpegts_input_t *mi, mpegts_mux_t *mm )
 {
-  extern const idclass_t mpegts_mux_instance_class;
   tvh_input_instance_t *tii;
   LIST_FOREACH(tii, &mi->mi_mux_instances, tii_input_link)
     if (((mpegts_mux_instance_t *)tii)->mmi_mux == mm) break;

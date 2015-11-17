@@ -106,8 +106,6 @@ linuxdvb_switch_class_get_title
   snprintf(dst, dstsize, tvh_gettext_lang(lang, N_("Switch: %s")), ld->ld_type);
 }
 
-extern const idclass_t linuxdvb_diseqc_class;
-
 CLASS_DOC(linuxdvb_satconf)
 
 const idclass_t linuxdvb_switch_class =

@@ -31,9 +31,6 @@
 #include <assert.h>
 #include <sched.h>
 
-extern const idclass_t mpegts_input_class;
-
-
 static void *
 tsfile_input_thread ( void *aux )
 {

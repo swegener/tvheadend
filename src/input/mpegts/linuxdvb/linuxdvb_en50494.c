@@ -135,8 +135,6 @@ linuxdvb_en50494_pin_list ( void *o, const char *lang )
   return m;
 }
 
-extern const idclass_t linuxdvb_diseqc_class;
-
 const idclass_t linuxdvb_en50494_class =
 {
   .ic_super       = &linuxdvb_diseqc_class,

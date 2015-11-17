@@ -60,6 +60,8 @@ typedef TAILQ_HEAD(linuxdvb_satconf_ele_list,linuxdvb_satconf_ele) linuxdvb_satc
 typedef TAILQ_HEAD(linuxdvb_ca_write_queue,linuxdvb_ca_write) linuxdvb_ca_write_queue_t;
 #endif
 
+extern int linuxdvb_adapter_mask;
+
 struct linuxdvb_adapter
 {
   tvh_hardware_t;

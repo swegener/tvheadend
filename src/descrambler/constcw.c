@@ -125,7 +125,6 @@ constcw_service_start(caclient_t *cac, service_t *t)
   char buf[128];
   caid_t *c;
 
-  extern const idclass_t mpegts_service_class;
   if (!idnode_is_instance(&t->s_id, &mpegts_service_class))
     return;
   mt = (mpegts_service_t *)t;

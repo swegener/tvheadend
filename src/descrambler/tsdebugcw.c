@@ -86,7 +86,6 @@ tsdebugcw_service_start(service_t *t)
   th_descrambler_t *td;
   char buf[128];
 
-  extern const idclass_t mpegts_service_class;
   if (!idnode_is_instance(&t->s_id, &mpegts_service_class))
     return;
 

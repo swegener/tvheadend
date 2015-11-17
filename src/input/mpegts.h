@@ -854,8 +854,6 @@ mpegts_network_t *mpegts_network_create0
 #define mpegts_network_create(t, u, n, c)\
   (struct t*)mpegts_network_create0(calloc(1, sizeof(struct t)), &t##_class, u, n, c)
 
-extern const idclass_t mpegts_network_class;
-
 static inline mpegts_network_t *mpegts_network_find(const char *uuid)
   { return idnode_find(uuid, &mpegts_network_class, NULL); }
 

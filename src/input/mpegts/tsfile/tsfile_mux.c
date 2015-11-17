@@ -19,9 +19,6 @@
 
 #include "tsfile_private.h"
 
-extern const idclass_t mpegts_mux_class;
-extern const idclass_t mpegts_mux_instance_class;
-
 static void
 tsfile_mux_instance_delete( tvh_input_instance_t *tii )
 {

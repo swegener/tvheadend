@@ -83,6 +83,7 @@ htsmsg_t * dvb_network_class_scanfile_list ( void *o, const char *lang );
 /*
  *
  */
+extern const idclass_t dvb_mux_class;
 extern const idclass_t dvb_mux_dvbt_class;
 extern const idclass_t dvb_mux_dvbc_class;
 extern const idclass_t dvb_mux_dvbs_class;

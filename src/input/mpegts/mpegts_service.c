@@ -32,8 +32,6 @@
  * Class definition
  * *************************************************************************/
 
-extern const idclass_t service_class;
-
 static const void *
 mpegts_service_class_get_mux ( void *ptr )
 {
@@ -593,7 +591,6 @@ mpegts_service_channel_icon ( service_t *s )
   /* DVB? */
 #if ENABLE_MPEGTS_DVB
   mpegts_service_t *ms = (mpegts_service_t*)s;
-  extern const idclass_t dvb_mux_class;
   if (ms->s_dvb_mux &&
       idnode_is_instance(&ms->s_dvb_mux->mm_id, &dvb_mux_class)) {
     int32_t hash = 0;
@@ -658,7 +655,6 @@ mpegts_service_match_network(mpegts_network_t *mn, uint32_t hash, const idclass_
 static int
 mpegts_service_match_mux(dvb_mux_t *mm, uint32_t hash, const idclass_t *idc)
 {
-  extern const idclass_t dvb_mux_dvbs_class;
   dvb_mux_t *mmd;
   int freq, pol;
 

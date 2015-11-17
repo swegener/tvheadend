@@ -347,7 +347,6 @@ linuxdvb_check_ddci ( const char *ci_path )
 static void
 linuxdvb_adapter_add ( const char *path )
 {
-  extern int linuxdvb_adapter_mask;
   int a, i, j, r, fd;
   char fe_path[512], dmx_path[512], dvr_path[512], name[132];
 #if ENABLE_LINUXDVB_CA

@@ -431,7 +431,6 @@ static const idclass_t *
 mpegts_network_mux_class
   ( mpegts_network_t *mn )
 {
-  extern const idclass_t mpegts_mux_class;
   return &mpegts_mux_class;
 }
 

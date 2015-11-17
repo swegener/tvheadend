@@ -466,7 +466,6 @@ epggrab_ota_data_timeout_cb ( void *p )
 static void
 epggrab_ota_kick_cb ( void *p )
 {
-  extern const idclass_t mpegts_mux_class;
   epggrab_ota_map_t *map;
   epggrab_ota_mux_t *om = TAILQ_FIRST(&epggrab_ota_pending);
   mpegts_mux_t *mm;

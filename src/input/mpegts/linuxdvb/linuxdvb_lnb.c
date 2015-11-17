@@ -51,8 +51,6 @@ linuxdvb_lnb_class_get_title
   snprintf(dst, dstsize, tvh_gettext_lang(lang, N_("LNB: %s")), ld->ld_type);
 }
 
-extern const idclass_t linuxdvb_diseqc_class;
-
 const idclass_t linuxdvb_lnb_class =
 {
   .ic_super       = &linuxdvb_diseqc_class,

@@ -39,7 +39,6 @@ api_mpegts_input_network_list
   mpegts_network_t *mn;
   idnode_set_t *is;
   char ubuf[UUID_HEX_SIZE];
-  extern const idclass_t mpegts_input_class;
 
   if (!(uuid = htsmsg_get_str(args, "uuid")))
     return EINVAL;
@@ -408,10 +407,6 @@ api_dvb_scanfile_list
 void
 api_mpegts_init ( void )
 {
-  extern const idclass_t mpegts_network_class;
-  extern const idclass_t mpegts_mux_class;
-  extern const idclass_t mpegts_service_class;
-
   static api_hook_t ah[] = {
     { "mpegts/input/network_list", ACCESS_ADMIN, api_mpegts_input_network_list, NULL },
     { "mpegts/network/grid",       ACCESS_ADMIN, api_idnode_grid,  api_mpegts_network_grid },

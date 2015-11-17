@@ -83,8 +83,6 @@ linuxdvb_rotor_class_get_title
   snprintf(dst, dstsize, tvh_gettext_lang(lang, N_("Rotor: %s")), ld->ld_type);
 }
 
-extern const idclass_t linuxdvb_diseqc_class;
-
 CLASS_DOC(linuxdvb_satconf)
 
 const idclass_t linuxdvb_rotor_class = {

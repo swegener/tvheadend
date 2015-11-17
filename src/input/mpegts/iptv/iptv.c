@@ -109,7 +109,6 @@ iptv_input_class_get_title
   snprintf(dst, dstsize, "%s", tvh_gettext_lang(lang, N_("IPTV")));
 }
 
-extern const idclass_t mpegts_input_class;
 const idclass_t iptv_input_class = {
   .ic_super      = &mpegts_input_class,
   .ic_class      = "iptv_input",
@@ -759,7 +758,6 @@ iptv_network_class_icon_url_set( void *in, const void *v )
 PROP_DOC(priority)
 PROP_DOC(streaming_priority)
 
-extern const idclass_t mpegts_network_class;
 const idclass_t iptv_network_class = {
   .ic_super      = &mpegts_network_class,
   .ic_class      = "iptv_network",
@@ -1012,7 +1010,6 @@ iptv_network_create_service
 static const idclass_t *
 iptv_network_mux_class ( mpegts_network_t *mm )
 {
-  extern const idclass_t iptv_mux_class;
   return &iptv_mux_class;
 }
 

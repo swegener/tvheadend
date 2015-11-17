@@ -38,8 +38,6 @@
 static void
 dvb_mux_delete ( mpegts_mux_t *mm, int delconf );
 
-extern const idclass_t mpegts_mux_class;
-
 /*
  * Generic
  */

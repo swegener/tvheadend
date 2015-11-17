@@ -30,9 +30,6 @@ pthread_mutex_t          tsfile_lock;
 mpegts_network_t         *tsfile_network;
 tsfile_input_list_t      tsfile_inputs;
 
-extern const idclass_t mpegts_service_class;
-extern const idclass_t mpegts_network_class;
-
 static htsmsg_t *
 tsfile_service_config_save ( service_t *s, char *filename, size_t fsize )
 {

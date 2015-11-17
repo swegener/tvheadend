@@ -38,8 +38,6 @@
  * Class definition
  * ***************************************************************************/
 
-extern const idclass_t mpegts_network_class;
-
 static void
 dvb_network_class_delete ( idnode_t *in )
 {

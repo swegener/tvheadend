@@ -1562,7 +1562,6 @@ service_restart(service_t *t)
 streaming_start_t *
 service_build_stream_start(service_t *t)
 {
-  extern const idclass_t mpegts_service_class;
   elementary_stream_t *st;
   int n = 0;
   streaming_start_t *ss;

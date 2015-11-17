@@ -20,8 +20,6 @@
 #include "iptv_private.h"
 #include "settings.h"
 
-extern const idclass_t mpegts_service_class;
-
 static htsmsg_t *
 iptv_service_config_save ( service_t *s, char *filename, size_t fsize )
 {
