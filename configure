@@ -744,6 +744,8 @@ fi
 # Write config
 # ###########################################################################
 
+OPTIONS=( $( echo "${OPTIONS[@]}" | xargs -n 1 | sort ) )
+
 # Write config
 write_config
 cat >> "${CONFIG_H}" <<EOF
