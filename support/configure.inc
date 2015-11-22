@@ -456,6 +456,13 @@ print_config ()
   printf "$fmt" "Data files:" "${datadir}"
   printf "$fmt" "Man pages:" "${mandir}"
   echo ""
+
+  echo "Final Binary:"
+  echo "  $BUILDDIR/tvheadend"
+  echo ""
+  echo "Tvheadend Data Directory:"
+  echo "  $(eval echo ${datadir}/tvheadend)"
+  echo ""
 }
 
 # Write configuration
@@ -571,5 +578,9 @@ EOF
   # Add build config string
   print_config | sed -e 's/"/\\"/g' | sed -e 's/.*/  "\0" "\\n"/g' >> "${CONFIG_C}"
   echo '  "";' >> "${CONFIG_C}"
+
+  cat >> "${CONFIG_H}" <<EOF
+#define TVHEADEND_DATADIR "$(eval echo ${datadir})/tvheadend"
+EOF
 }
 
