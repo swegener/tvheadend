@@ -211,5 +211,5 @@ iptv_udp_init ( void )
       .pause  = iptv_input_pause_handler
     }
   };
-  iptv_handler_register(ih, 2);
+  iptv_handler_register(ih, ARRAY_SIZE(ih));
 }

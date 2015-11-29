@@ -612,5 +612,5 @@ iptv_http_init ( void )
       .pause  = iptv_http_pause
     }
   };
-  iptv_handler_register(ih, 2);
+  iptv_handler_register(ih, ARRAY_SIZE(ih));
 }
