@@ -556,7 +556,7 @@ streaming_start_component_find_by_index(streaming_start_t *ss, int idx)
 /**
  *
  */
-static struct strtab streamtypetab[] = {
+static const struct strtab streamtypetab[] = {
   { "NONE",       SCT_NONE },
   { "UNKNOWN",    SCT_UNKNOWN },
   { "RAW",        SCT_RAW },

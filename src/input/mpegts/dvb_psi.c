@@ -333,10 +333,10 @@ dvb_desc_sat_del
   dmc.u.dmc_fe_qpsk.symbol_rate  = symrate * 100;
   dmc.u.dmc_fe_qpsk.fec_inner    = fec_tab[ptr[10] & 0x0f];
 
-  static int mtab[4] = {
+  static const int mtab[4] = {
     DVB_MOD_NONE, DVB_MOD_QPSK, DVB_MOD_PSK_8, DVB_MOD_QAM_16
   };
-  static int rtab[4] = {
+  static const int rtab[4] = {
     DVB_ROLLOFF_35, DVB_ROLLOFF_25, DVB_ROLLOFF_20, DVB_ROLLOFF_AUTO
   };
   dmc.dmc_fe_modulation = mtab[ptr[6] & 0x3];
@@ -838,7 +838,7 @@ dvb_freesat_completed
  * UK BSkyB
  */
 
-static struct strtab bskyb_regions[] = {
+static const struct strtab bskyb_regions[] = {
   { "Atherstone",                  19 },
   { "Border England",              12 },
   { "Border Scotland",             36 },

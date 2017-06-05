@@ -35,7 +35,7 @@
 #define ACCESS_SIMPLE \
 (ACCESS_WEB_INTERFACE | ACCESS_RECORDER)
 
-static struct strtab recstatustxt[] = {
+static const struct strtab recstatustxt[] = {
   { "Recording scheduled", DVR_SCHEDULED  },
   { "Recording",           DVR_RECORDING, },
   { "Recording completed", DVR_COMPLETED, },

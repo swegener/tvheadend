@@ -38,7 +38,7 @@ typedef struct auto_private {
  */
 static int _epgcfg_from_str(const char *str)
 {
-  static struct strtab cfgs[] = {
+  static const struct strtab cfgs[] = {
     { "0",                 MM_EPG_DISABLE },
     { "none",              MM_EPG_DISABLE },
     { "disable",           MM_EPG_DISABLE },

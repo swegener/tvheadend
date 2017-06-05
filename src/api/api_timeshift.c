@@ -28,7 +28,7 @@
 void
 api_timeshift_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "timeshift/config/load", ACCESS_ADMIN, api_idnode_load_simple, &timeshift_conf },
     { "timeshift/config/save", ACCESS_ADMIN, api_idnode_save_simple, &timeshift_conf },
     { NULL },

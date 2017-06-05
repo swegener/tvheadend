@@ -301,7 +301,7 @@ iptv_sub_weight(const char *id, const char *fmt, const void *aux, char *tmp, siz
   return tmp;
 }
 
-static htsstr_substitute_t iptv_input_subst[] = {
+static const htsstr_substitute_t iptv_input_subst[] = {
   { .id = "m",  .getval = iptv_sub_mux_name },
   { .id = "n",  .getval = iptv_sub_service_name },
   { .id = "w",  .getval = iptv_sub_weight },

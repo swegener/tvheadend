@@ -125,7 +125,7 @@ api_pathlist
 
 void api_init ( void )
 {
-  static api_hook_t h[] = {
+  static const api_hook_t h[] = {
     { "serverinfo", ACCESS_ANONYMOUS, api_serverinfo, NULL },
     { "pathlist", ACCESS_ANONYMOUS, api_pathlist, NULL },
     { NULL, 0, NULL, NULL }

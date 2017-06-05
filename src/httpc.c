@@ -1745,7 +1745,7 @@ http_client_testsuite_data_received( http_client_t *hc, void *data, size_t len )
   return 0;
 }
 
-static struct strtab HTTP_contab[] = {
+static const struct strtab HTTP_contab[] = {
   { "WAIT_REQUEST", HTTP_CON_WAIT_REQUEST },
   { "READ_HEADER",  HTTP_CON_READ_HEADER },
   { "END",          HTTP_CON_END },
@@ -1756,7 +1756,7 @@ static struct strtab HTTP_contab[] = {
   { "DONE",         HTTP_CON_DONE },
 };
 
-static struct strtab ERRNO_tab[] = {
+static const struct strtab ERRNO_tab[] = {
   { "EPERM",           EPERM },
   { "ENOENT",          ENOENT },
   { "ESRCH",           ESRCH },

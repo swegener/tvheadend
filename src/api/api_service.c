@@ -185,7 +185,7 @@ api_service_remove_unseen
 
 void api_service_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "service/mapper/load",    ACCESS_ADMIN, api_idnode_load_simple, &service_mapper_conf },
     { "service/mapper/save",    ACCESS_ADMIN, api_idnode_save_simple, &service_mapper_conf },
     { "service/mapper/stop",    ACCESS_ADMIN, api_mapper_stop,   NULL },

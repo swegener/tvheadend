@@ -58,7 +58,7 @@ api_input_satip_discover
 
 void api_input_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "hardware/tree", ACCESS_ADMIN,     api_idnode_tree, api_input_hw_tree }, 
 #if ENABLE_SATIP_CLIENT
     { "hardware/satip/discover", ACCESS_ADMIN, api_input_satip_discover, NULL },

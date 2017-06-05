@@ -52,7 +52,7 @@ api_idnode_flist_conf( htsmsg_t *args, const char *name )
   return m;
 }
 
-static struct strtab filtcmptab[] = {
+static const struct strtab filtcmptab[] = {
   { "gt", IC_GT },
   { "lt", IC_LT },
   { "eq", IC_EQ }
@@ -746,7 +746,7 @@ void api_idnode_init ( void )
   /*
    * note: permissions are verified using idnode_perm() calls
    */
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "idnode/load",     ACCESS_ANONYMOUS, api_idnode_load,     NULL },
     { "idnode/save",     ACCESS_ANONYMOUS, api_idnode_save,     NULL },
     { "idnode/tree",     ACCESS_ANONYMOUS, api_idnode_tree,     NULL },

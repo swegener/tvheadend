@@ -45,7 +45,7 @@ api_intlconv_charset_enum
 
 void api_intlconv_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
 
     { "intlconv/charsets", ACCESS_ANONYMOUS, api_intlconv_charset_enum, NULL },
 

@@ -113,7 +113,7 @@ static struct lng *lng_add(const char *tvh_lang, const char *locale_lang)
 
 static void lng_init(struct lng *l)
 {
-  struct tvh_locale *tl;
+  const struct tvh_locale *tl;
   int i;
 
   l->msgs_initialized = 1;

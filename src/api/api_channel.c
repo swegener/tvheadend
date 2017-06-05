@@ -227,7 +227,7 @@ api_channel_cat_list
 
 void api_channel_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "channel/class",   ACCESS_ANONYMOUS, api_idnode_class, (void*)&channel_class },
     { "channel/grid",    ACCESS_ANONYMOUS, api_idnode_grid,  api_channel_grid },
     { "channel/list",    ACCESS_ANONYMOUS, api_channel_list, NULL },

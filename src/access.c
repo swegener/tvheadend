@@ -1337,7 +1337,7 @@ access_entry_profile_rend (void *o, const char *lang)
 static htsmsg_t *
 access_entry_conn_limit_type_enum ( void *p, const char *lang )
 {
-  static struct strtab
+  static const struct strtab
   conn_limit_type_tab[] = {
     { N_("All (Streaming plus DVR)"),  ACCESS_CONN_LIMIT_TYPE_ALL },
     { N_("Streaming"),                 ACCESS_CONN_LIMIT_TYPE_STREAMING   },
@@ -1400,7 +1400,7 @@ uilevel_nochange_get_list ( void *o, const char *lang )
 htsmsg_t *
 theme_get_ui_list ( void *p, const char *lang )
 {
-  static struct strtab_str tab[] = {
+  static const struct strtab_str tab[] = {
     { N_("Blue"),     "blue"  },
     { N_("Gray"),     "gray"  },
     { N_("Access"),   "access" },
@@ -1408,7 +1408,7 @@ theme_get_ui_list ( void *p, const char *lang )
   return strtab2htsmsg_str(tab, 1, lang);
 }
 
-static idnode_slist_t access_entry_class_change_slist[] = {
+static const idnode_slist_t access_entry_class_change_slist[] = {
   {
     .id   = "change_rights",
     .name = N_("Rights"),
@@ -1487,7 +1487,7 @@ access_entry_class_change_set ( void *obj, const void *p )
 }
 
 
-static idnode_slist_t access_entry_class_streaming_slist[] = {
+static const idnode_slist_t access_entry_class_streaming_slist[] = {
   {
     .id   = "basic",
     .name = N_("Basic"),
@@ -1530,7 +1530,7 @@ access_entry_class_streaming_set ( void *obj, const void *p )
   return idnode_slist_set(obj, access_entry_class_streaming_slist, p);
 }
 
-static idnode_slist_t access_entry_class_dvr_slist[] = {
+static const idnode_slist_t access_entry_class_dvr_slist[] = {
   {
     .id   = "basic",
     .name = N_("Basic"),

@@ -2,7 +2,7 @@
 #define _DVB_CHARSET_TABLES_H 1
 
 // Code tables for the variable part of the iso 8859 family (codes 0xa0 to 0xff)
-static uint16_t conv_8859_table[14][96] = {
+static const uint16_t conv_8859_table[14][96] = {
   /* ISO-8859-1 */ {
     /* 0xA0 */ 0x00A0, 0x00A1, 0x00A2, 0x00A3, 0x00A4, 0x00A5, 0x00A6, 0x00A7,
     /* 0xA8 */ 0x00A8, 0x00A9, 0x00AA, 0x00AB, 0x00AC, 0x00AD, 0x00AE, 0x00AF,

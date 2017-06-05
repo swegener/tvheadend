@@ -543,7 +543,7 @@ descrambler_multi_pid ( th_descrambler_t *td )
   return dr->dr_key_multipid;
 }
 
-static struct strtab keystatetab[] = {
+static const struct strtab keystatetab[] = {
   { "INIT",       DS_INIT },
   { "READY",      DS_READY },
   { "RESOLVED",   DS_RESOLVED },
@@ -599,7 +599,7 @@ descrambler_change_keystate( th_descrambler_t *td, th_descrambler_keystate_t key
     pthread_mutex_unlock(&t->s_stream_mutex);
 }
 
-static struct strtab keytypetab[] = {
+static const struct strtab keytypetab[] = {
   { "NONE",       DESCRAMBLER_NONE },
   { "CSA",        DESCRAMBLER_CSA_CBC },
   { "DES",        DESCRAMBLER_DES_NCB },

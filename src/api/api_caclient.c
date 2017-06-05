@@ -101,7 +101,7 @@ api_caclient_create
 void
 api_caclient_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "caclient/list",       ACCESS_ADMIN, api_caclient_list,     NULL },
     { "caclient/class",      ACCESS_ADMIN, api_idnode_class, (void*)&caclient_class },
     { "caclient/builders",   ACCESS_ADMIN, api_caclient_builders, NULL },

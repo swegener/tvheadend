@@ -271,7 +271,7 @@ void api_idnode_raw_init ( void )
   /*
    * note: permissions are verified using idnode_perm() calls
    */
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "classes",        ACCESS_ANONYMOUS, api_idnode_classes,        NULL },
     { "raw/export",     ACCESS_ANONYMOUS, api_idnode_raw_export,     NULL },
     { "raw/import",     ACCESS_ANONYMOUS, api_idnode_raw_import,     NULL },

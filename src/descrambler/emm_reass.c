@@ -738,7 +738,7 @@ _tvhlog_hexdump(const char *file, int line,
 #define UA      "00:00:00:00:00:00:00"
 #define SA      "00:00:00:00:A1:A2:A3"
 
-static char *emms[] = {
+static const char *emms[] = {
   "8C 70 0C 90 03 04 08 21 A9 05 46 8B 46 BA 04",
   "8D 70 0C 90 03 04 08 21 A9 05 46 8D 46 BC 04",
   "8E 70 2C A1 A2 A3 00 00 00 00 00 00 00 00 00 00"

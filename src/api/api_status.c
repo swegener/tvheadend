@@ -165,7 +165,7 @@ api_status_input_clear_stats
 
 void api_status_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "status/connections",   ACCESS_ADMIN, api_status_connections, NULL },
     { "status/subscriptions", ACCESS_ADMIN, api_status_subscriptions, NULL },
     { "status/inputs",        ACCESS_ADMIN, api_status_inputs, NULL },

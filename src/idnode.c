@@ -1556,7 +1556,7 @@ idnode_serialize0(idnode_t *self, htsmsg_t *list, int optmask, const char *lang)
  * *************************************************************************/
 
 htsmsg_t *
-idnode_slist_enum ( idnode_t *in, idnode_slist_t *options, const char *lang )
+idnode_slist_enum ( idnode_t *in, const idnode_slist_t *options, const char *lang )
 {
   htsmsg_t *l = htsmsg_create_list(), *m;
 
@@ -1568,7 +1568,7 @@ idnode_slist_enum ( idnode_t *in, idnode_slist_t *options, const char *lang )
 }
 
 htsmsg_t *
-idnode_slist_get ( idnode_t *in, idnode_slist_t *options )
+idnode_slist_get ( idnode_t *in, const idnode_slist_t *options )
 {
   htsmsg_t *l = htsmsg_create_list();
   int *ip;
@@ -1582,9 +1582,9 @@ idnode_slist_get ( idnode_t *in, idnode_slist_t *options )
 }
 
 int
-idnode_slist_set ( idnode_t *in, idnode_slist_t *options, const htsmsg_t *vals )
+idnode_slist_set ( idnode_t *in, const idnode_slist_t *options, const htsmsg_t *vals )
 {
-  idnode_slist_t *o;
+  const idnode_slist_t *o;
   htsmsg_field_t *f;
   int *ip, changed = 0;
   const char *s;
@@ -1618,7 +1618,7 @@ idnode_slist_set ( idnode_t *in, idnode_slist_t *options, const htsmsg_t *vals )
 }
 
 char *
-idnode_slist_rend ( idnode_t *in, idnode_slist_t *options, const char *lang )
+idnode_slist_rend ( idnode_t *in, const idnode_slist_t *options, const char *lang )
 {
   int *ip;
   size_t l = 0;

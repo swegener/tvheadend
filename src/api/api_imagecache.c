@@ -58,7 +58,7 @@ api_imagecache_trigger
 void
 api_imagecache_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "imagecache/config/load",    ACCESS_ADMIN, api_idnode_load_simple, &imagecache_conf },
     { "imagecache/config/save",    ACCESS_ADMIN, api_idnode_save_simple, &imagecache_conf },
     { "imagecache/config/clean"  , ACCESS_ADMIN, api_imagecache_clean, NULL },

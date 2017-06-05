@@ -573,7 +573,7 @@ typedef enum
   SIGNAL_NONE
 } signal_state_t;
 
-static struct strtab signal_statetab[] = {
+static const struct strtab signal_statetab[] = {
   { "GOOD",       SIGNAL_GOOD    },
   { "BAD",        SIGNAL_BAD     },
   { "FAINT",      SIGNAL_FAINT   },

@@ -814,7 +814,7 @@ caclient_t *cwc_create(void)
  * this stuff is worth it, you can buy me a beer in return.   Poul-Henning Kamp
  */
 
-static unsigned char itoa64[] = /* 0 ... 63 => ascii - 64 */
+static const unsigned char itoa64[] = /* 0 ... 63 => ascii - 64 */
         "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 /* to64 BUFFER VALUE NUM

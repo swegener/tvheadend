@@ -389,14 +389,14 @@ mpegts_mux_class_get_name ( void *ptr )
   return &s;
 }
 
-static struct strtab
+static const struct strtab
 scan_state_tab[] = {
   { N_("IDLE"),   MM_SCAN_STATE_IDLE },
   { N_("PEND"),   MM_SCAN_STATE_PEND },
   { N_("ACTIVE"), MM_SCAN_STATE_ACTIVE },
 };
 
-static struct strtab
+static const struct strtab
 scan_result_tab[] = {
  { N_("NONE"),         MM_SCAN_NONE },
  { N_("OK"),           MM_SCAN_OK   },

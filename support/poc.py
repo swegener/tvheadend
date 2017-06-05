@@ -138,7 +138,7 @@ def to_c(po_files):
 
   idx = 1
   sep = ''
-  sys.stdout.write("static struct tvh_locale tvh_locales[] = {\n");
+  sys.stdout.write("static const struct tvh_locale tvh_locales[] = {\n");
   for l in po_files:
     strings = po_files[l]
     sys.stdout.write('%s{ "%s", tvh_locale_%d' % (sep, l, idx))

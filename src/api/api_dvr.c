@@ -557,7 +557,7 @@ api_dvr_entry_file_moved
 
 void api_dvr_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "dvr/config/class",          ACCESS_OR|ACCESS_ADMIN|ACCESS_RECORDER,
                                      api_idnode_class, (void*)&dvr_config_class },
     { "dvr/config/grid",           ACCESS_OR|ACCESS_ADMIN|ACCESS_RECORDER,

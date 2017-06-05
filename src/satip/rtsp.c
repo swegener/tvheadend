@@ -749,7 +749,7 @@ endclean:
 static inline int
 msys_to_tvh(http_connection_t *hc)
 {
-  static struct strtab tab[] = {
+  static const struct strtab tab[] = {
     { "dvbs",  DVB_SYS_DVBS },
     { "dvbs2", DVB_SYS_DVBS2 },
     { "dvbt",  DVB_SYS_DVBT },
@@ -766,7 +766,7 @@ msys_to_tvh(http_connection_t *hc)
 static inline int
 pol_to_tvh(http_connection_t *hc)
 {
-  static struct strtab tab[] = {
+  static const struct strtab tab[] = {
     { "h",  DVB_POLARISATION_HORIZONTAL },
     { "v",  DVB_POLARISATION_VERTICAL },
     { "l",  DVB_POLARISATION_CIRCULAR_LEFT },
@@ -855,7 +855,7 @@ pilot_to_tvh(http_connection_t *hc)
 static int
 tmode_to_tvh(http_connection_t *hc)
 {
-  static struct strtab tab[] = {
+  static const struct strtab tab[] = {
     { "auto", DVB_TRANSMISSION_MODE_AUTO },
     { "1k",   DVB_TRANSMISSION_MODE_1K },
     { "2k",   DVB_TRANSMISSION_MODE_2K },
@@ -875,7 +875,7 @@ tmode_to_tvh(http_connection_t *hc)
 static int
 mtype_to_tvh(http_connection_t *hc)
 {
-  static struct strtab tab[] = {
+  static const struct strtab tab[] = {
     { "auto",   DVB_MOD_AUTO },
     { "qpsk",   DVB_MOD_QPSK },
     { "8psk",   DVB_MOD_PSK_8 },

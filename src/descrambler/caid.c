@@ -25,7 +25,7 @@ struct caid_tab {
   uint16_t mask;
 };
 
-static struct caid_tab caidnametab[] = {
+static const struct caid_tab caidnametab[] = {
   { "Seca",             0x0100, 0xff00 },
   { "CCETT",            0x0200, 0xff00 },
   { "Deutsche Telekom", 0x0300, 0xff00 },
@@ -82,7 +82,7 @@ caid2name(uint16_t caid)
 {
   const char *s = NULL;
   static char __thread buf[20];
-  struct caid_tab *tab;
+  const struct caid_tab *tab;
   int i;
 
   for (i = 0; i < ARRAY_SIZE(caidnametab); i++) {
@@ -102,7 +102,7 @@ uint16_t
 name2caid(const char *s)
 {
   int i, r = -1;
-  struct caid_tab *tab;
+  const struct caid_tab *tab;
 
   for (i = 0; i < ARRAY_SIZE(caidnametab); i++) {
     tab = &caidnametab[i];

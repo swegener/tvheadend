@@ -713,7 +713,7 @@ dvr_config_class_charset_list(void *o, const char *lang)
 static htsmsg_t *
 dvr_config_class_cache_list(void *o, const char *lang)
 {
-  static struct strtab tab[] = {
+  static const struct strtab tab[] = {
     { N_("Unknown"),            MC_CACHE_UNKNOWN },
     { N_("System"),             MC_CACHE_SYSTEM },
     { N_("Don't keep"),         MC_CACHE_DONTKEEP },

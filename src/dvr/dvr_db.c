@@ -63,7 +63,7 @@ static dvr_entry_t *_dvr_duplicate_event(dvr_entry_t *de);
  *
  */
 
-static struct strtab schedstatetab[] = {
+static const struct strtab schedstatetab[] = {
   { "SCHEDULED",  DVR_SCHEDULED },
   { "RECORDING",  DVR_RECORDING },
   { "COMPLETED",  DVR_COMPLETED },
@@ -77,7 +77,7 @@ dvr_entry_sched_state2str(dvr_entry_sched_state_t s)
   return val2str(s, schedstatetab) ?: "INVALID";
 }
 
-static struct strtab rsstatetab[] = {
+static const struct strtab rsstatetab[] = {
   { "PENDING",    DVR_RS_PENDING },
   { "WAIT",       DVR_RS_WAIT_PROGRAM_START },
   { "RUNNING",    DVR_RS_RUNNING },
@@ -1540,7 +1540,7 @@ static int _dvr_duplicate_unique_match(dvr_entry_t *de1, dvr_entry_t *de2, void 
  */
 static dvr_entry_t *_dvr_duplicate_event(dvr_entry_t *de)
 {
-  static _dvr_duplicate_fcn_t fcns[] = {
+  static const _dvr_duplicate_fcn_t fcns[] = {
     [DVR_AUTOREC_RECORD_UNIQUE]                    = _dvr_duplicate_unique_match,
     [DVR_AUTOREC_RECORD_DIFFERENT_EPISODE_NUMBER]  = _dvr_duplicate_epnum,
     [DVR_AUTOREC_LRECORD_DIFFERENT_EPISODE_NUMBER] = _dvr_duplicate_epnum,

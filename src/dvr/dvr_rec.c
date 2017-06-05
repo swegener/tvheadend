@@ -648,7 +648,7 @@ dvr_sub_comment(const char *id, const char *fmt, const void *aux, char *tmp, siz
   return dvr_do_prefix(id, fmt, ((dvr_entry_t *)aux)->de_comment, tmp, tmplen);
 }
 
-static htsstr_substitute_t dvr_subs_entry[] = {
+static const htsstr_substitute_t dvr_subs_entry[] = {
   { .id = "?t",  .getval = dvr_sub_title },
   { .id = "? t", .getval = dvr_sub_title },
   { .id = "?-t", .getval = dvr_sub_title },
@@ -719,7 +719,7 @@ dvr_sub_strftime(const char *id, const char *fmt, const void *aux, char *tmp, si
   return dvr_clean_directory_separator(tmp, tmp, tmplen);
 }
 
-static htsstr_substitute_t dvr_subs_time[] = {
+static const htsstr_substitute_t dvr_subs_time[] = {
   { .id = "a", .getval = dvr_sub_strftime }, /* The abbreviated name of the day of the week */
   { .id = "A", .getval = dvr_sub_strftime }, /* The full name of the day of the week */
   { .id = "b", .getval = dvr_sub_strftime }, /* The abbreviated month name */
@@ -798,17 +798,17 @@ dvr_sub_str_separator(const char *id, const char *fmt, const void *aux, char *tm
   return dvr_clean_directory_separator(tmp, tmp, tmplen);
 }
 
-static htsstr_substitute_t dvr_subs_extension[] = {
+static const htsstr_substitute_t dvr_subs_extension[] = {
   { .id = "x", .getval = dvr_sub_str_separator },
   { .id = NULL, .getval = NULL }
 };
 
-static htsstr_substitute_t dvr_subs_tally[] = {
+static const htsstr_substitute_t dvr_subs_tally[] = {
   { .id = "n", .getval = dvr_sub_str_separator },
   { .id = NULL, .getval = NULL }
 };
 
-static htsstr_substitute_t dvr_subs_postproc_entry[] = {
+static const htsstr_substitute_t dvr_subs_postproc_entry[] = {
   { .id = "t",  .getval = dvr_sub_title },
   { .id = "s",  .getval = dvr_sub_subtitle_or_summary },
   { .id = "u",  .getval = dvr_sub_subtitle },
@@ -836,7 +836,7 @@ dvr_sub_basename(const char *id, const char *fmt, const void *aux, char *tmp, si
   return basename(tmp);
 }
 
-static htsstr_substitute_t dvr_subs_postproc_filename[] = {
+static const htsstr_substitute_t dvr_subs_postproc_filename[] = {
   { .id = "f",  .getval = dvr_sub_str },
   { .id = "b",  .getval = dvr_sub_basename },
   { .id = NULL, .getval = NULL }
@@ -864,7 +864,7 @@ dvr_sub_basic_info(const char *id, const char *fmt, const void *aux, char *tmp, 
   return tmp;
 }
 
-static htsstr_substitute_t dvr_subs_postproc_info[] = {
+static const htsstr_substitute_t dvr_subs_postproc_info[] = {
   { .id = "i",  .getval = dvr_sub_basic_info },
   { .id = NULL, .getval = NULL }
 };

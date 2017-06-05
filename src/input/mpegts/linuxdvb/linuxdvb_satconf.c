@@ -31,7 +31,7 @@
 #include <linux/dvb/dmx.h>
 #include <linux/dvb/frontend.h>
 
-static struct linuxdvb_satconf_type *
+static const struct linuxdvb_satconf_type *
 linuxdvb_satconf_type_find ( const char *type );
 
 struct linuxdvb_satconf_type {
@@ -152,7 +152,7 @@ linuxdvb_satconf_class_get_title
   ( idnode_t *p, const char *lang, char *dst, size_t dstsize )
 {
   linuxdvb_satconf_t *ls = (linuxdvb_satconf_t*)p;
-  struct linuxdvb_satconf_type *lst =
+  const struct linuxdvb_satconf_type *lst =
     linuxdvb_satconf_type_find(ls->ls_type);
   snprintf(dst, dstsize, "%s", lst ? lst->name : ls->ls_type);
 }
@@ -747,7 +747,7 @@ const idclass_t linuxdvb_satconf_advanced_class =
  * *************************************************************************/
 
 /* Types/classes */
-static struct linuxdvb_satconf_type linuxdvb_satconf_types[] = {
+static const struct linuxdvb_satconf_type linuxdvb_satconf_types[] = {
   {
     .type   = "simple",
     .name   = N_("Universal LNB only"),
@@ -793,7 +793,7 @@ static struct linuxdvb_satconf_type linuxdvb_satconf_types[] = {
 };
 
 /* Find type (with default) */
-static struct linuxdvb_satconf_type *
+static const struct linuxdvb_satconf_type *
 linuxdvb_satconf_type_find ( const char *type )
 {
   int i;
@@ -1144,7 +1144,7 @@ linuxdvb_satconf_create
   htsmsg_field_t *f;
   linuxdvb_satconf_ele_t *lse;
   const char *str, *type = NULL, *uuid = NULL;
-  struct linuxdvb_satconf_type *lst;
+  const struct linuxdvb_satconf_type *lst;
 
   if (conf) {
     type = htsmsg_get_str(conf, "type");

@@ -37,7 +37,7 @@ typedef struct tvh2satip {
 #define TABLE_EOD -1
 
 static const char *
-satip_rtsp_setup_find(const char *prefix, tvh2satip_t *tbl,
+satip_rtsp_setup_find(const char *prefix, const tvh2satip_t *tbl,
                       int src, const char *defval)
 {
   while (tbl->t >= 0) {
@@ -72,7 +72,7 @@ satip_rtsp_setup( http_client_t *hc, int src, int fe,
                   int udp_port, const dvb_mux_conf_t *dmc, int flags,
                   int weight )
 {
-  static tvh2satip_t msys[] = {
+  static const tvh2satip_t msys[] = {
     { .t = DVB_SYS_DVBT,                      "dvbt"  },
     { .t = DVB_SYS_DVBT2,                     "dvbt2" },
     { .t = DVB_SYS_DVBS,                      "dvbs"  },
@@ -83,21 +83,21 @@ satip_rtsp_setup( http_client_t *hc, int src, int fe,
     { .t = DVB_SYS_DVBC_ANNEX_B,              "dvbcb" },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t pol[] = {
+  static const tvh2satip_t pol[] = {
     { .t = DVB_POLARISATION_HORIZONTAL,       "h"     },
     { .t = DVB_POLARISATION_VERTICAL,         "v"     },
     { .t = DVB_POLARISATION_CIRCULAR_LEFT,    "l"     },
     { .t = DVB_POLARISATION_CIRCULAR_RIGHT,   "r"     },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t ro[] = {
+  static const tvh2satip_t ro[] = {
     { .t = DVB_ROLLOFF_AUTO,                  "0.35"  },
     { .t = DVB_ROLLOFF_20,                    "0.20"  },
     { .t = DVB_ROLLOFF_25,                    "0.25"  },
     { .t = DVB_ROLLOFF_35,                    "0.35"  },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t mtype[] = {
+  static const tvh2satip_t mtype[] = {
     { .t = DVB_MOD_AUTO,                      "auto"  },
     { .t = DVB_MOD_QAM_16,                    "16qam" },
     { .t = DVB_MOD_QAM_32,                    "32qam" },
@@ -108,13 +108,13 @@ satip_rtsp_setup( http_client_t *hc, int src, int fe,
     { .t = DVB_MOD_PSK_8,                     "8psk"  },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t plts[] = {
+  static const tvh2satip_t plts[] = {
     { .t = DVB_PILOT_AUTO,                    "auto"  },
     { .t = DVB_PILOT_ON,                      "on"    },
     { .t = DVB_PILOT_OFF,                     "off"   },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t fec[] = {
+  static const tvh2satip_t fec[] = {
     { .t = DVB_FEC_AUTO,                      "auto"  },
     { .t = DVB_FEC_1_2,                       "12"    },
     { .t = DVB_FEC_2_3,                       "23"    },
@@ -127,7 +127,7 @@ satip_rtsp_setup( http_client_t *hc, int src, int fe,
     { .t = DVB_FEC_9_10,                      "910"   },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t tmode[] = {
+  static const tvh2satip_t tmode[] = {
     { .t = DVB_TRANSMISSION_MODE_AUTO,        "auto"  },
     { .t = DVB_TRANSMISSION_MODE_1K,          "1k"    },
     { .t = DVB_TRANSMISSION_MODE_2K,          "2k"    },
@@ -137,7 +137,7 @@ satip_rtsp_setup( http_client_t *hc, int src, int fe,
     { .t = DVB_TRANSMISSION_MODE_32K,         "32k"   },
     { .t = TABLE_EOD }
   };
-  static tvh2satip_t gi[] = {
+  static const tvh2satip_t gi[] = {
     { .t = DVB_GUARD_INTERVAL_AUTO,           "auto"  },
     { .t = DVB_GUARD_INTERVAL_1_4,            "14"    },
     { .t = DVB_GUARD_INTERVAL_1_8,            "18"    },

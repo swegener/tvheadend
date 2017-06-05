@@ -279,7 +279,7 @@ api_epg_filter_add_num
     api_epg_filter_set_num(&eq->age, v1, v2, comp);
 }
 
-static struct strtab sortcmptab[] = {
+static const struct strtab sortcmptab[] = {
   { "start",         ESK_START },
   { "stop",          ESK_STOP },
   { "duration",      ESK_DURATION },
@@ -295,7 +295,7 @@ static struct strtab sortcmptab[] = {
   { "genre",         ESK_GENRE }
 };
 
-static struct strtab filtcmptab[] = {
+static const struct strtab filtcmptab[] = {
   { "gt",    EC_GT },
   { "lt",    EC_LT },
   { "eq",    EC_EQ },
@@ -662,7 +662,7 @@ api_epg_content_type_list(access_t *perm, void *opaque, const char *op,
 
 void api_epg_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "epg/events/grid",        ACCESS_ANONYMOUS, api_epg_grid, NULL },
     { "epg/events/alternative", ACCESS_ANONYMOUS, api_epg_alternative, NULL },
     { "epg/events/related",     ACCESS_ANONYMOUS, api_epg_related, NULL },

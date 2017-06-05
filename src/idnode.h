@@ -266,10 +266,10 @@ static inline void idnode_perm_unset(idnode_t *self) { self->in_access = NULL; }
   (((idnode_t *)self)->in_access ? \
    ((idnode_t *)self)->in_access->aa_lang_ui : NULL)
 
-htsmsg_t * idnode_slist_enum ( idnode_t *in, idnode_slist_t *options, const char *lang );
-htsmsg_t * idnode_slist_get ( idnode_t *in, idnode_slist_t *options );
-int idnode_slist_set ( idnode_t *in, idnode_slist_t *options, const htsmsg_t *vals );
-char * idnode_slist_rend ( idnode_t *in, idnode_slist_t *options, const char *lang );
+htsmsg_t * idnode_slist_enum ( idnode_t *in, const idnode_slist_t *options, const char *lang );
+htsmsg_t * idnode_slist_get ( idnode_t *in, const idnode_slist_t *options );
+int idnode_slist_set ( idnode_t *in, const idnode_slist_t *options, const htsmsg_t *vals );
+char * idnode_slist_rend ( idnode_t *in, const idnode_slist_t *options, const char *lang );
 
 idnode_list_mapping_t * idnode_list_link
                        ( idnode_t *in1, idnode_list_head_t *in1_list,

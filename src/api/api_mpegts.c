@@ -407,7 +407,7 @@ api_dvb_scanfile_list
 void
 api_mpegts_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "mpegts/input/network_list", ACCESS_ADMIN, api_mpegts_input_network_list, NULL },
     { "mpegts/network/grid",       ACCESS_ADMIN, api_idnode_grid,  api_mpegts_network_grid },
     { "mpegts/network/class",      ACCESS_ADMIN, api_idnode_class, (void*)&mpegts_network_class },

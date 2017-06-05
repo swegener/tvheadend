@@ -70,7 +70,7 @@ ESFILTER(other, ESF_CLASS_OTHER);
 
 void api_esfilter_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "esfilter/video/class",    ACCESS_ANONYMOUS, api_idnode_class, (void*)&esfilter_class_video },
     { "esfilter/video/grid",     ACCESS_ANONYMOUS, api_idnode_grid,  api_esfilter_grid_video },
     { "esfilter/video/create",   ACCESS_ADMIN,     api_esfilter_create_video, NULL },

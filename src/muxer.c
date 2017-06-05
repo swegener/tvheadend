@@ -38,7 +38,7 @@
 /**
  * Mime type for containers containing only audio
  */
-static struct strtab container_audio_mime[] = {
+static const struct strtab container_audio_mime[] = {
   { "application/octet-stream", MC_UNKNOWN },
   { "audio/x-matroska",         MC_MATROSKA },
   { "audio/x-matroska",         MC_AVMATROSKA },
@@ -60,7 +60,7 @@ static struct strtab container_audio_mime[] = {
 /**
  * Mime type for containers
  */
-static struct strtab container_video_mime[] = {
+static const struct strtab container_video_mime[] = {
   { "application/octet-stream", MC_UNKNOWN },
   { "video/x-matroska",         MC_MATROSKA },
   { "video/x-matroska",         MC_AVMATROSKA },
@@ -77,7 +77,7 @@ static struct strtab container_video_mime[] = {
 /**
  * Name of the container
  */
-static struct strtab container_name[] = {
+static const struct strtab container_name[] = {
   { "unknown",    MC_UNKNOWN },
   { "matroska",   MC_MATROSKA },
   { "webm",       MC_WEBM },
@@ -99,7 +99,7 @@ static struct strtab container_name[] = {
 /**
  * filename suffix of audio-only streams
  */
-static struct strtab container_audio_file_suffix[] = {
+static const struct strtab container_audio_file_suffix[] = {
   { "bin",  MC_UNKNOWN },
   { "mka",  MC_MATROSKA },
   { "webm", MC_WEBM },
@@ -121,7 +121,7 @@ static struct strtab container_audio_file_suffix[] = {
 /**
  * filename suffix of video streams
  */
-static struct strtab container_video_file_suffix[] = {
+static const struct strtab container_video_file_suffix[] = {
   { "bin",  MC_UNKNOWN },
   { "mkv",  MC_MATROSKA },
   { "webm", MC_WEBM },
@@ -368,7 +368,7 @@ muxer_suffix(muxer_t *m,  const struct streaming_start *ss)
 /**
  * cache type conversions
  */
-static struct strtab cache_types[] = {
+static const struct strtab cache_types[] = {
   { "Unknown",            MC_CACHE_UNKNOWN },
   { "System",             MC_CACHE_SYSTEM },
   { "Do not keep",        MC_CACHE_DONTKEEP },

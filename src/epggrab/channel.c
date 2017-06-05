@@ -659,7 +659,7 @@ epggrab_channel_class_channels_rend ( void *obj, const char *lang )
   return idnode_list_get_csv1(&ec->channels, lang);
 }
 
-static idnode_slist_t epggrab_channel_class_update_slist[] = {
+static const idnode_slist_t epggrab_channel_class_update_slist[] = {
   {
     .id   = "update_icon",
     .name = N_("Icon"),

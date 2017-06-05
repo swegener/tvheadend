@@ -728,7 +728,7 @@ bouquet_class_lcn_offset_notify ( void *obj, const char *lang )
   bouquet_notify_channels((bouquet_t *)obj);
 }
 
-static idnode_slist_t bouquest_class_mapopt_slist[] = {
+static const idnode_slist_t bouquest_class_mapopt_slist[] = {
   {
     .id   = "mapnolcn",
     .name = N_("Map zero-numbered channels"),
@@ -816,7 +816,7 @@ bouquet_class_mapopt_notify ( void *obj, const char *lang )
   bouquet_map_to_channels(bq);
 }
 
-static idnode_slist_t bouquest_class_chtag_slist[] = {
+static const idnode_slist_t bouquest_class_chtag_slist[] = {
   {
     .id   = "bouquet_tag",
     .name = N_("Create bouquet tag"),

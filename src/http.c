@@ -52,7 +52,7 @@ static int http_server_running;
 static pthread_mutex_t http_paths_mutex = PTHREAD_MUTEX_INITIALIZER;
 static http_path_list_t http_paths;
 
-static struct strtab HTTP_cmdtab[] = {
+static const struct strtab HTTP_cmdtab[] = {
   { "NONE",          HTTP_CMD_NONE },
   { "GET",           HTTP_CMD_GET },
   { "HEAD",          HTTP_CMD_HEAD },
@@ -68,7 +68,7 @@ static struct strtab HTTP_cmdtab[] = {
 
 
 
-static struct strtab HTTP_versiontab[] = {
+static const struct strtab HTTP_versiontab[] = {
   { "HTTP/1.0",        HTTP_VERSION_1_0 },
   { "HTTP/1.1",        HTTP_VERSION_1_1 },
   { "RTSP/1.0",        RTSP_VERSION_1_0 },

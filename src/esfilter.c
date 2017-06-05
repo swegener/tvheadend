@@ -53,7 +53,7 @@ static const idclass_t *esfilter_classes[ESF_CLASS_LAST+1] = {
  * Class types
  */
 
-static struct strtab esfilterclasstab[] = {
+static const struct strtab esfilterclasstab[] = {
   { "NONE",       ESF_CLASS_NONE },
   { "VIDEO",      ESF_CLASS_VIDEO },
   { "AUDIO",      ESF_CLASS_AUDIO },
@@ -81,7 +81,7 @@ esfilter_txt2class(const char *s)
  * Action types
  */
 
-static struct strtab esfilteractiontab[] = {
+static const struct strtab esfilteractiontab[] = {
   { "NONE",       ESFA_NONE },
   { "USE",	  ESFA_USE },
   { "ONE_TIME",	  ESFA_ONE_TIME },

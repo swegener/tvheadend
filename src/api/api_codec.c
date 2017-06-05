@@ -125,7 +125,7 @@ api_codec_profile_create(access_t *perm, void *opaque, const char *op,
 void
 api_codec_init(void)
 {
-    static api_hook_t ah[] = {
+    static const api_hook_t ah[] = {
         {"codec/list", ACCESS_ADMIN, api_codec_list, NULL},
         {"codec_profile/list", ACCESS_ANONYMOUS, api_codec_profile_list, NULL},
         {"codec_profile/create", ACCESS_ADMIN, api_codec_profile_create, NULL},

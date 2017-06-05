@@ -43,7 +43,7 @@ htsstr_substitute_find(const char *src, int first);
 
 char *
 htsstr_substitute(const char *src, char *dst, size_t dstlen,
-                  int first, htsstr_substitute_t *sub, const void *aux,
+                  int first, const htsstr_substitute_t *sub, const void *aux,
                   char *tmp, size_t tmplen);
 
 #endif /* HTSSTR_H__ */

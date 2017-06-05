@@ -85,7 +85,7 @@ api_epggrab_rerun_internal
 
 void api_epggrab_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "epggrab/channel/list", ACCESS_ANONYMOUS, api_idnode_load_by_class, (void*)&epggrab_channel_class },
     { "epggrab/channel/class", ACCESS_ADMIN, api_idnode_class, (void*)&epggrab_channel_class },
     { "epggrab/channel/grid", ACCESS_ADMIN, api_idnode_grid, api_epggrab_channel_grid },

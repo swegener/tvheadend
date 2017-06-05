@@ -28,7 +28,7 @@
 void
 api_satip_server_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "satips/config/load", ACCESS_ADMIN, api_idnode_load_simple, &satip_server_conf },
     { "satips/config/save", ACCESS_ADMIN, api_idnode_save_simple, &satip_server_conf },
     { NULL },

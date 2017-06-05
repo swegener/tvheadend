@@ -143,7 +143,7 @@ api_bouquet_detach
 
 void api_bouquet_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "bouquet/list",    ACCESS_ADMIN, api_bouquet_list, NULL },
     { "bouquet/class",   ACCESS_ADMIN, api_idnode_class, (void*)&bouquet_class },
     { "bouquet/grid",    ACCESS_ADMIN, api_idnode_grid,  api_bouquet_grid },

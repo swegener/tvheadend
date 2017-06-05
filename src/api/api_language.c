@@ -92,7 +92,7 @@ api_language_ui_locale_enum
 
 void api_language_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
 
     { "language/list",      ACCESS_ANONYMOUS, api_language_enum, NULL },
     { "language/locale",    ACCESS_ANONYMOUS, api_language_locale_enum, NULL },

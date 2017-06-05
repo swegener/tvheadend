@@ -133,7 +133,7 @@ api_profile_create
 void
 api_profile_init ( void )
 {
-  static api_hook_t ah[] = {
+  static const api_hook_t ah[] = {
     { "profile/list",       ACCESS_ANONYMOUS, api_profile_list,     NULL },
     { "profile/class",      ACCESS_ADMIN,     api_idnode_class, (void*)&profile_class },
     { "profile/builders",   ACCESS_ADMIN,     api_profile_builders, NULL },
