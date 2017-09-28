@@ -1338,7 +1338,7 @@ static netceiver_t * netceiver_create(const char *uuid)
   return nc;
 }
 
-static netceiver_t *netceiver_find(const char *uuid, int *created)
+static netceiver_t *netceiver_find(const char *uuid, int create, int *created)
 {
   netceiver_t *nc;
 
@@ -1347,6 +1347,9 @@ static netceiver_t *netceiver_find(const char *uuid, int *created)
     if (!strcmp(nc->nc_uuid, uuid))
       goto out;
   }
+
+  if (!create)
+    goto out;
 
   nc = netceiver_create(uuid);
 
@@ -1397,7 +1400,7 @@ static netceiver_t *netceiver_parse_discovery_platform(htsmsg_t *msg, const char
   uuid = htsmsg_xml_get_cdata_str(msg, PRF_NS "UUID");
   if (!uuid)
     return NULL;
-  nc = netceiver_find(uuid, NULL);
+  nc = netceiver_find(uuid, 1, NULL);
   if (!nc)
     return NULL;
 
