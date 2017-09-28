@@ -960,6 +960,9 @@ typedef struct netceiver {
 
   time_t nc_last_status;
 
+  char nc_log_buf[1024];
+  int nc_log_buf_len;
+
   LIST_ENTRY(netceiver) nc_link;
 
   netceiver_tuner_group_t nc_tuners;
@@ -1712,6 +1715,33 @@ static void netceiver_discovery_handle_discovery(netceiver_discovery_t *ncd, uin
   }
 }
 
+static void netceiver_discovery_handle_log(netceiver_discovery_t *ncd, struct sockaddr_storage *addr, uint8_t *buf, size_t len)
+{
+  char mcg_buf[INET6_ADDRSTRLEN];
+  netceiver_t *nc;
+  char *newlinepos;
+
+  inet_ntop(addr->ss_family, IP_IN_ADDR(*addr), mcg_buf, sizeof(mcg_buf));
+  nc = netceiver_find(mcg_buf, 0, NULL);
+  if (!nc)
+    return;
+
+  if (len > sizeof(nc->nc_log_buf) - nc->nc_log_buf_len) {
+    nc->nc_log_buf_len = 0;
+    return;
+  }
+
+  memcpy(nc->nc_log_buf + nc->nc_log_buf_len, buf, len);
+  nc->nc_log_buf_len += len;
+
+  newlinepos = memchr(nc->nc_log_buf, '\n', nc->nc_log_buf_len);
+  if (newlinepos) {
+    *newlinepos = 0;
+    tvhdebug(LS_NETCEIVER, "[%s] %s", mcg_buf, nc->nc_log_buf);
+    nc->nc_log_buf_len = 0;
+  }
+}
+
 static void *netceiver_discovery_thread_func(void *aux)
 {
   uint8_t buf[65536];
@@ -1738,6 +1768,9 @@ static void *netceiver_discovery_thread_func(void *aux)
       case NETCEIVER_GROUP_ANNOUNCE:
       case NETCEIVER_GROUP_STATUS:
         netceiver_discovery_handle_discovery(ncd, buf, len);
+        break;
+      case NETCEIVER_GROUP_LOG:
+        netceiver_discovery_handle_log(ncd, &addr, buf, len);
         break;
       default:
         break;
@@ -1769,6 +1802,7 @@ void netceiver_discovery_add_interface(const char *interface)
   tvhdebug(LS_NETCEIVER, "adding discovery on interface %s", interface);
   netceiver_discovery_bind(NETCEIVER_GROUP_ANNOUNCE, interface);
   netceiver_discovery_bind(NETCEIVER_GROUP_STATUS, interface);
+  netceiver_discovery_bind(NETCEIVER_GROUP_LOG, interface);
 }
 
 void netceiver_discovery_remove_interface(const char *interface)
