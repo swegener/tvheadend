@@ -1716,6 +1716,8 @@ static void *netceiver_discovery_thread_func(void *aux)
 {
   uint8_t buf[65536];
   size_t len;
+  struct sockaddr_storage addr;
+  socklen_t addr_len;
   netceiver_discovery_t *ncd;
   tvhpoll_event_t ev;
 
@@ -1725,7 +1727,7 @@ static void *netceiver_discovery_thread_func(void *aux)
 
     ncd = ev.ptr;
 
-    len = recv(ncd->ncd_udp->fd, buf, sizeof(buf), MSG_DONTWAIT);
+    len = recvfrom(ncd->ncd_udp->fd, buf, sizeof(buf), MSG_DONTWAIT, (struct sockaddr *) &addr, &addr_len);
     if (len < 0) {
       if (errno != EAGAIN && errno != EINTR)
         tvherror(LS_NETCEIVER, "discovery - recv() error %d (%s)", errno, strerror(errno));
