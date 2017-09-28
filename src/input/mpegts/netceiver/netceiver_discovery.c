@@ -1680,17 +1680,39 @@ static void netceiver_parse_discovery(htsmsg_t *msg, const char *interface)
  */
 
 typedef struct netceiver_discovery {
+  netceiver_group_t ncd_group;
   udp_connection_t *ncd_udp;
   LIST_ENTRY(netceiver_discovery) ncd_link;
 } netceiver_discovery_t;
 
 static LIST_HEAD(, netceiver_discovery) netceiver_discovery_list;
 
+static void netceiver_discovery_handle_discovery(netceiver_discovery_t *ncd, uint8_t *buf, size_t len)
+{
+  uint8_t *dest;
+  size_t dest_len;
+  char errbuf[2048];
+
+  dest = tvh_gzip_inflate_dynamic(buf, len, &dest_len);
+  if (dest) {
+    dest = realloc(dest, dest_len + 1);
+    dest[dest_len] = '\0';
+
+    htsmsg_t *msg = htsmsg_xml_deserialize((char *) dest, errbuf, sizeof(errbuf));
+    if (!msg) {
+      tvherror(LS_NETCEIVER, "discovery - decoding XML failed: %s", errbuf);
+      return;
+    }
+
+    netceiver_parse_discovery(msg, ncd->ncd_udp->ifname);
+    htsmsg_destroy(msg);
+  }
+}
+
 static void *netceiver_discovery_thread_func(void *aux)
 {
-  uint8_t buf[65536], *dest;
-  size_t len, dest_len;
-  char errbuf[2048];
+  uint8_t buf[65536];
+  size_t len;
   netceiver_discovery_t *ncd;
   tvhpoll_event_t ev;
 
@@ -1707,19 +1729,13 @@ static void *netceiver_discovery_thread_func(void *aux)
       continue;
     }
 
-    dest = tvh_gzip_inflate_dynamic(buf, len, &dest_len);
-    if (dest) {
-      dest = realloc(dest, dest_len + 1);
-      dest[dest_len] = '\0';
-
-      htsmsg_t *msg = htsmsg_xml_deserialize((char *) dest, errbuf, sizeof(errbuf));
-      if (!msg) {
-        tvherror(LS_NETCEIVER, "discovery - decoding XML failed: %s", errbuf);
-        continue;
-      }
-
-      netceiver_parse_discovery(msg, ncd->ncd_udp->ifname);
-      htsmsg_destroy(msg);
+    switch (ncd->ncd_group) {
+      case NETCEIVER_GROUP_ANNOUNCE:
+      case NETCEIVER_GROUP_STATUS:
+        netceiver_discovery_handle_discovery(ncd, buf, len);
+        break;
+      default:
+        break;
     }
   }
 
@@ -1731,6 +1747,7 @@ static void netceiver_discovery_bind(netceiver_group_t group, const char *interf
   netceiver_discovery_t *ncd;
 
   ncd = calloc(1, sizeof(*ncd));
+  ncd->ncd_group = group;
 
   ncd->ncd_udp = netceiver_tune("discovery", interface, group, 1, NULL, 0, 0);
   if (ncd->ncd_udp) {
